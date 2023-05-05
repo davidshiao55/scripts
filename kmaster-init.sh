@@ -1,3 +1,4 @@
+echo $host_username $host_ip
 #Script should be run as root 
 #Disable Firewall
 ufw disable
