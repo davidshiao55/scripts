@@ -32,3 +32,8 @@ kubeadm init --apiserver-advertise-address=$1 --pod-network-cidr=192.168.0.0/16 
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
 #Cluster join command
 kubeadm token create --print-join-command
+
+#run kubectl as normal user
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
