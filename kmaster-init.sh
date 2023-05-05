@@ -27,7 +27,7 @@ sysctl --system
 apt update && apt install -y kubeadm=1.18.5-00 kubelet=1.18.5-00 kubectl=1.18.5-00
 #Initialize Kubernetes Cluster
 #Update the below command with the ip address of kmaster
-kubeadm init --apiserver-advertise-address=172.16.16.100 --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
+kubeadm init --apiserver-advertise-address=$1 --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
 #Deploy Calico network
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
 #Cluster join command
