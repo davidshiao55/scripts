@@ -1,4 +1,3 @@
-password = $1
 #Login as root user
 #echo $password | sudo -S su -
 #Disable Firewall
