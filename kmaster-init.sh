@@ -1,4 +1,3 @@
-echo $host_username $host_ip
 #Script should be run as root 
 #Disable Firewall
 ufw disable
@@ -27,7 +26,7 @@ sysctl --system
 apt update && apt install -y kubeadm=1.18.5-00 kubelet=1.18.5-00 kubectl=1.18.5-00
 #Initialize Kubernetes Cluster
 #Update the below command with the ip address of kmaster
-kubeadm init --apiserver-advertise-address=$host_ip --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
+kubeadm init --apiserver-advertise-address=$1 --pod-network-cidr=192.168.0.0/16  --ignore-preflight-errors=all
 #Deploy Calico network
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
 #Cluster join command
@@ -36,4 +35,4 @@ kubeadm token create --print-join-command
 #run kubectl as normal user
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-chown $(id $host_username -u):$(id $host_username -g) $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
