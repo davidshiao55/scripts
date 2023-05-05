@@ -1,6 +1,6 @@
 password = $1
 #Login as root user
-echo $password | sudo -S su -
+#echo $password | sudo -S su -
 #Disable Firewall
 ufw disable
 #Disable swap
