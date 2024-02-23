@@ -1,0 +1,1 @@
+helm repo add kubescape https://kubescape.github.io/helm-charts/ ; helm repo update ; helm upgrade --install kubescape kubescape/kubescape-cloud-operator -n kubescape --create-namespace --set clusterName=`kubectl config current-context` --set account=d01e19b7-db5a-4960-bb37-7108f00db6b3
